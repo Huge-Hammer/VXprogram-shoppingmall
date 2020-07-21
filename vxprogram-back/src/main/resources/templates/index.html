@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>管理商品</title>
+<style>
+    table
+    {
+        border-collapse:collapse;
+    }
+    th
+    {
+        background-color:dodgerblue;
+        color:white;
+    }
+    table,th, td
+    {
+        border: 1px solid blue;
+    }
+</style>
+</head>
+<body>
+<div th:align="center"><h2>当前商品展示</h2><br><br></div>
+
+<div th:align="center">
+    <table>
+        <tr>
+            <th>商品id</th>
+            <th>商品名称</th>
+            <th>商品图片路径</th>
+            <th>商品价格</th>
+            <th>商品信息</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="product:${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.subject}"></td>
+            <td th:text="${product.coverpath}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.message}"></td>
+            <td><a href="/delete">删除</a></td>
+        </tr>
+    </table>
+</div>
+<div th:align="center"><br><br><a href="/Add">去添加商品</a></div>
+</body>
+</html>

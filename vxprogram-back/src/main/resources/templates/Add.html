@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加商品</title>
+</head>
+<body>
+<div th:align="center">
+<form action="/save" method="post">
+    商品名：<input type="text" th:value="${subject}" name="subject"><br/>
+    商品图片路径：<input type="text" th:value="${coverpath}" name="coverpath"><br/>
+    商品价格：<input type="text" th:value="${price}" name="price"><br/>
+    商品介绍：<input type="text" th:value="${message}" name="message"><br/>
+    <button>保存</button>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<view class="container">
+<scroll-view  scroll-y="true"  class="page-body">
+
+<!--后端加载轮播图-->
+<view class='swiperBar'>
+<swiper class="u-wrp-bnr" indicator-dots="true" autoplay="true" interval="3000" duration="500 " circular="true">
+    <block wx:for="{{backUrl}}" wx:key="backUrl">
+        <swiper-item>
+          <image src="{{item.picurl}}" class="u-img-slide" mode="aspectFill"></image>
+        </swiper-item>
+    </block>
+</swiper>
+</view>
+
+<!--搜索框-->
+    <view class="search">
+        <navigator url="../search/search">
+            <view class="search-text">
+                <icon class="weui-icon-search_in-box search-icon" type="search" size="12"></icon>
+                搜 索
+            </view>
+        </navigator>
+    </view>
+
+<!--商品-->
+
+  <view class="nav_section">
+    <view wx:if="{{product}}">
+        <block wx:for="{{product}}" wx:key="product">
+            <view class="nav_section_items" >
+
+                <!--商品图片-->
+                <view class="section_image" bindtap="navigateDetail">
+                <block wx:if="{{item.coverpath}}" wx:key="product">
+                    <image src="{{item.coverpath}}" mode="aspectFill"></image>
+                </block>
+                </view>
+
+                <!--商品内容-->
+                <!--bindtap 点击内容跳转至对应的详情页-->
+                <view class="section_cont" bindtap="navigateDetail" data-aid="{{item.id}}">
+                    <view class="section_cont_sub">
+                        <text>{{item.subject}}</text>
+                    </view>
+                    <view class="section_cont_price">价格：{{item.price}}</view>
+                    <view>{{item.message}}</view>
+                </view>
+
+                <!--购买按钮绑定booktap事件-->
+                <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">
+                        <text>购买</text>
+                </view>
+            </view>
+            
+        </block>
+    </view>
+    
+    <view wx:else>暂无数据</view>
+</view>
+
+</scroll-view>
+</view>
